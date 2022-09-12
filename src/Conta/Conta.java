@@ -1,13 +1,12 @@
 package Conta;
 
+
+
 public abstract class Conta {
 	protected String nome;
 	protected String cpf;
 	protected String senha;
 	protected double saldo;
-	private double saque;
-	private double deposito;
-	private double transferencia;
 	
 	public Conta() {	
 	}
@@ -22,51 +21,46 @@ public abstract class Conta {
 	public String getNome() {
 		return nome;
 	}
-	public void setNome(String nome) {
-		this.nome = nome;
-	}
+	
 	
 	public String getCpf() {
 		return cpf;
 	}
-	public void setCpf(String cpf) {
-		this.cpf = cpf;
-	}
+	
 	
 	public String getSenha() {
 		return senha;
 	}
-	public void setSenha(String senha) {
-		this.senha = senha;
+	
+	public double getSaldo() {
+		return saldo;
 	}
 	
-	public double getSaque() {
-		return saque;
+	public String Sacar(double valor) {
+		if (this.saldo < valor) {
+			return "Saldo Insuficiente";
+		} else {
+			double novoSaldo = this.saldo - valor;
+			this.saldo = novoSaldo;
+			return "Saque Efetuado";
+			
+		}
 	}
-	public void Saque(double saque) {
-		this.saldo = saldo - saque;
-	}
-	
-	public double getDeposito() {
-		return deposito;
-	}
-	
+		
 	public void Deposito(double deposito) {
 		this.saldo = saldo + deposito;
 	}
 	
-	public double getTransferencia() {
-		return transferencia;
+	public void Tranferir(Conta destino, double valor) {
+		if (this.saldo >= valor) {
+			this.saldo = this.saldo - valor;
+			destino.saldo = destino.saldo + valor;
+		} else {
+			System.out.println("Não há saldo suficiente para transferência");
+		}
 	}
-	public void setTransferencia(double transferencia) {
-		this.transferencia = transferencia;
-	}
-	public double getSaldo() {
-		return saldo;
-	}
-	public void setSaldo(double saldo) {
-		this.saldo = saldo;
-	}
+	
+	
 	@Override
 	public String toString() {
 		return "[Nome = " + nome + ", CPF = " + cpf + ", Saldo = " + saldo + "]";
