@@ -1,6 +1,7 @@
 package Main;
 
 import Conta.ContaCorrente;
+import Conta.ContaPoupanca;
 
 public class SistemaInterno {
 
@@ -11,6 +12,13 @@ public class SistemaInterno {
 		System.out.println(c1.getSaldo());
 		c1.Saque(410.50);
 		System.out.println(c1.getSaldo());
+		
+		ContaPoupanca p1 = new ContaPoupanca("Pedro", "1551515442", "4321",500.50, "Conta Poupanca");
+		System.out.println(p1.toString());
+		p1.Deposito(60.00);
+		System.out.println(p1.getSaldo());
+		p1.Saque(300.50);
+		System.out.println(p1.getSaldo());
 	}
 
 }
