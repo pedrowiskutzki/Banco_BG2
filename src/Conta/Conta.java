@@ -1,13 +1,11 @@
 package Conta;
 
-
-
 public abstract class Conta {
 	protected String nome;
 	protected String cpf;
 	protected String senha;
 	protected double saldo;
-	
+
 	public Conta() {	
 	}
 	public Conta(String nome, String cpf, String senha, double saldo) {	
@@ -47,7 +45,7 @@ public abstract class Conta {
 		}
 	}
 		
-	public void Deposito(double deposito) {
+	public void Depositar(double deposito) {
 		this.saldo = saldo + deposito;
 	}
 	
@@ -64,7 +62,5 @@ public abstract class Conta {
 	@Override
 	public String toString() {
 		return "[Nome = " + nome + ", CPF = " + cpf + ", Saldo = " + saldo + "]";
-	}
-	
-	
+	}	
 }
