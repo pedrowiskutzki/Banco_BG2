@@ -32,6 +32,9 @@ public class SistemaInterno {
 		
 		//relatorio contacorrente
 		System.out.printf(c1.RelatorioContaCorrente());
+		
+		//relatorio de Rendimento
+		System.out.println(p1.rendimentoPoupanca(5));
 	}
 
 }
