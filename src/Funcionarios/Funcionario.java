@@ -1,6 +1,8 @@
 package Funcionarios;
 
-public abstract class Funcionario {
+import Conta.Conta;
+
+public abstract class Funcionario extends Conta{
 	private String nome;
 	private String cpf;
 	private String senha;

@@ -2,6 +2,7 @@ package Main;
 
 import Conta.ContaCorrente;
 import Conta.ContaPoupanca;
+import Funcionarios.Gerente;
 
 public class SistemaInterno {
 
@@ -35,6 +36,10 @@ public class SistemaInterno {
 		
 		//relatorio de Rendimento
 		System.out.println(p1.rendimentoPoupanca(5));
+		
+		//Gerente
+		Gerente g1 = new Gerente("Raquel", "12347859200", "1564", "Gerente", "001");
+		System.out.println();
+		
 	}
-
 }
