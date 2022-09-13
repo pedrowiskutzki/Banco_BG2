@@ -8,9 +8,9 @@ public class ContaPoupanca extends Conta {
 	private int quantMeses;
 	private double rendimento = 0.5;
 
-	public ContaPoupanca(String nome, String cpf, String senha, double saldo,String tipo ) {
+	public ContaPoupanca(String nome, String cpf, String senha, double saldo) {
 		super(nome, cpf, senha, saldo);
-		this.tipo = tipo;	
+		this.tipo = "Conta Poupança";
 	}
 		
 	public String rendimentoPoupanca(int quantMeses) {
