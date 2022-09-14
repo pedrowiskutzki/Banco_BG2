@@ -55,6 +55,7 @@ public class Gerente extends Funcionario {
 		}
 
 	}
+	
 
 	public String rendimentoPoupanca(int quantMeses) {
 		this.quantMeses = quantMeses;
