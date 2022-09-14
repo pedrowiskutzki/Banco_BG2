@@ -1,16 +1,13 @@
 package Funcionarios;
 
 public class Diretor extends Gerente {
+
+	public Diretor() {
+		super();	
+	}
+	public Diretor(String cargo, String tipo , String nome, String cpf, String senha, double saldo, String agencia) {
+		super(cargo, tipo, nome, cpf, senha, saldo, agencia);
+		
+	}
 	
-	private String TIPO = "DIRETOR";
-
-	public Diretor(String nome, String cpf, String senha, String cargo, String agencia) {
-		super(nome, cpf, senha, cargo, agencia);
-		
-	}
-
-	public Diretor(String cpf, String senha) {
-		super(cpf, senha);
-		
-	}
 }

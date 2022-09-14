@@ -3,26 +3,18 @@ package Funcionarios;
 import Conta.Conta;
 
 public abstract class Funcionario extends Conta{
-	private String nome;
-	protected String cpf;
-	protected String senha;
-	private String cargo;
 	
-	
-	public Funcionario(String nome, String cpf, String senha, String cargo) {
+	public Funcionario() {
 		super();
-		this.nome = nome;
-		this.cpf = cpf;
-		this.senha = senha;
-		this.cargo = cargo;
+	}
+	public Funcionario(String cargo, String tipo , String nome, String cpf, String senha, double saldo, String agencia) {
+		super(cargo, tipo, nome, cpf, senha, saldo, agencia);	
+		
 		}
 
-		public Funcionario(String cpf, String senha) {
-			super();
-			this.cpf = cpf;
-			this.senha = senha;
-		}
-
+	public String getAgencia() {
+		return agencia;
+	}
 	public String getNome() {
 		return nome;
 	}
@@ -34,11 +26,6 @@ public abstract class Funcionario extends Conta{
 	public String getSenha() {
 		return senha;
 	}
-
-	public String getCargo() {
-		return cargo;
-	}
-
 	
 }
 ;

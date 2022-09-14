@@ -1,15 +1,14 @@
 package Conta;
 
 public class ContaCorrente extends Conta{
-
-		private String tipo;
+	
 		private static int numTransferencias;
 		private static int numSaques;
 		private static int numDepositos;
 
-		public ContaCorrente(String nome, String cpf, String senha, double saldo,String tipo ) {
-			super(nome, cpf, senha, saldo);
-			this.tipo = tipo;
+		public ContaCorrente(String cargo, String tipo , String nome, String cpf, String senha, double saldo, String agencia) {
+			super(cargo, tipo, nome, cpf, senha, saldo, agencia);
+			
 			
 		}
 

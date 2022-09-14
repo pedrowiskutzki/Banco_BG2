@@ -7,29 +7,19 @@ import Conta.ContaCorrente;
 import Conta.ContaPoupanca;
 
 public class Gerente extends Funcionario {
-
-	private String TIPO = "GERENTE";
 	
-	private String agencia;
 	private static int numTransferencias;
 	private static int numSaques;
 	private static int numDepositos;
 	private int quantMeses;
 	private double rendimento;
 
-	public Gerente(String nome, String cpf, String senha, String cargo, String agencia) {
-		super(nome, cpf, senha, cargo);
-		this.agencia = agencia;
+	public Gerente() {
+		super();
 	}
-
-	public Gerente(String cpf, String senha) {
-		super(cpf, senha);
-		this.cpf = getCpf();
-		this.senha = getSenha();
-	}
-
-	public String getAgencia() {
-		return agencia;
+	public Gerente(String cargo, String tipo , String nome, String cpf, String senha, double saldo, String agencia) {
+		super(cargo, tipo, nome, cpf, senha, saldo, agencia);
+		
 	}
 
 	@Override

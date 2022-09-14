@@ -3,15 +3,13 @@ package Conta;
 import java.text.DecimalFormat;
 
 public class ContaPoupanca extends Conta {
-
-	private String tipo;
+	
 	private int quantMeses;
 	private double rendimento = 0.5;
 	private double depositoRendimento;
 
-	public ContaPoupanca(String nome, String cpf, String senha, double saldo,String tipo ) {
-		super(nome, cpf, senha, saldo);
-		this.tipo = tipo;	
+	public ContaPoupanca(String cargo, String tipo , String nome, String cpf, String senha, double saldo, String agencia ) {
+		super(cargo, tipo, nome, cpf, senha, saldo, agencia);
 	}
 		
 	public String rendimentoPoupanca(int quantMeses, double depositoRendimento) {
