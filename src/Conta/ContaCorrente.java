@@ -6,8 +6,8 @@ public class ContaCorrente extends Conta{
 		private static int numSaques;
 		private static int numDepositos;
 
-		public ContaCorrente(String cargo, String tipo , String nome, String cpf, String senha, double saldo, String agencia) {
-			super(cargo, tipo, nome, cpf, senha, saldo, agencia);
+		public ContaCorrente( String tipo , String cpf, double saldo, String agencia) {
+			super( tipo, cpf, saldo, agencia);
 			
 			
 		}
@@ -39,14 +39,15 @@ public class ContaCorrente extends Conta{
 		}
 		
 		@Override
-		public void Tranferir(Conta destino, double valor) {
+		public boolean Tranferir(Conta destino, double valor) {
 			if (this.saldo >= valor) {
 				this.saldo = this.saldo - valor;
 				destino.saldo = destino.saldo + valor;
 				numTransferencias++;
 				this.saldo = saldo - 0.20;
+				return true;
 			} else {
-				System.out.println("Não há saldo suficiente para transferência");
+				return false;				
 			}
 		}
 		

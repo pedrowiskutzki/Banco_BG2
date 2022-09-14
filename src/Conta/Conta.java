@@ -5,9 +5,7 @@ import java.util.Map;
 
 public abstract class Conta {
 	protected String tipo;
-	protected String nome;
 	protected String cpf;
-	protected String senha;
 	protected double saldo;
 	protected String agencia;
 	
@@ -15,12 +13,10 @@ public abstract class Conta {
 		
 	public Conta() {	
 	}
-	public Conta(String cargo, String tipo , String nome, String cpf, String senha, double saldo, String agencia) {	
-		 super();
-		 this.tipo = tipo;
-		 this.nome = nome;
-		 this.cpf = cpf;
-		 this.senha = senha;
+	public Conta( String tipo, String cpf, double saldo, String agencia) {	
+		 super();		 
+		 this.tipo = tipo; 
+		 this.cpf = cpf;		
 		 this.saldo = saldo;
 		 this.agencia = agencia;
 	}
@@ -28,14 +24,8 @@ public abstract class Conta {
 	public String getTipo() {
 		return tipo;
 	}
-	public String getNome() {
-		return nome;
-	}
 	public String getCpf() {
 		return cpf;
-	}
-	public String getSenha() {
-		return senha;
 	}
 	public double getSaldo() {
 		return saldo;
@@ -53,18 +43,13 @@ public abstract class Conta {
 	public void Depositar(double deposito) {
 		this.saldo = saldo + deposito;
 	}
-	public void Tranferir(Conta destino, double valor) {
+	public boolean Tranferir(Conta destino, double valor) {
 		if (this.saldo >= valor) {
 			this.saldo = this.saldo - valor;
 			destino.saldo = destino.saldo + valor;
+			return true;
 		} else {
-			System.out.println("Não há saldo suficiente para transferência");
+			return false;
 		}
 	}
-	
-	
-	@Override
-	public String toString() {
-		return "[Nome = " + nome + ", CPF = " + cpf + ", Saldo = " + saldo + "]";
-	}	
 }

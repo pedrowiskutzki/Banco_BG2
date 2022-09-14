@@ -1,5 +1,8 @@
 package Cliente;
 
+import java.util.HashMap;
+import java.util.Map;
+
 import Conta.Conta;
 
 public class Cliente extends Conta {
@@ -11,6 +14,8 @@ public class Cliente extends Conta {
 	private String senha;
 	private String cargo;
 
+	public static Map<String, Cliente> mapaCliente = new HashMap<>();
+	
 	public Cliente(String nome, String cpf, String senha, String cargo) {
 		super();
 		this.nome = nome;
