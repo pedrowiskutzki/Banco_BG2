@@ -4,8 +4,8 @@ import Conta.Conta;
 
 public abstract class Funcionario extends Conta{
 	private String nome;
-	private String cpf;
-	private String senha;
+	protected String cpf;
+	protected String senha;
 	private String cargo;
 	
 	
@@ -15,6 +15,12 @@ public abstract class Funcionario extends Conta{
 		this.cpf = cpf;
 		this.senha = senha;
 		this.cargo = cargo;
+		}
+
+		public Funcionario(String cpf, String senha) {
+			super();
+			this.cpf = cpf;
+			this.senha = senha;
 		}
 
 	public String getNome() {

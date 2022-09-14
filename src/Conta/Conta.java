@@ -1,11 +1,16 @@
 package Conta;
 
+import java.util.HashMap;
+import java.util.Map;
+
 public abstract class Conta {
 	protected String nome;
 	protected String cpf;
 	protected String senha;
 	protected double saldo;
-
+	
+	public static Map<String, Conta> mapaConta = new HashMap<>();
+	
 	public Conta() {	
 	}
 	public Conta(String nome, String cpf, String senha, double saldo) {	
