@@ -14,6 +14,7 @@ public class Cliente extends Conta {
 
 	public static Map<String, Cliente> mapaCliente = new HashMap<>();
 	
+	
 	public Cliente(String cargo, String nome, String cpf, String senha) {
 		super();
 		this.cargo = cargo;

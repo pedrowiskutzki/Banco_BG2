@@ -20,7 +20,6 @@ public abstract class Conta {
 		 this.saldo = saldo;
 		 this.agencia = agencia;
 	}
-	
 	public String getTipo() {
 		return tipo;
 	}
