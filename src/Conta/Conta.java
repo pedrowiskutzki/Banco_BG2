@@ -29,7 +29,10 @@ public abstract class Conta {
 	public double getSaldo() {
 		return saldo;
 	}
-
+	
+	public int getAgencia() {
+		return agencia;
+	}
 	public String Sacar(double valor) {
 		if (this.saldo < valor) {
 			return "Saldo Insuficiente";

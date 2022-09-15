@@ -2,6 +2,7 @@ package Cliente;
 
 import java.util.HashMap;
 import java.util.Map;
+import java.util.TreeMap;
 
 import Conta.Conta;
 
@@ -13,6 +14,7 @@ public class Cliente extends Conta {
 	private String cargo;
 
 	public static Map<String, Cliente> mapaCliente = new HashMap<>();
+	public static TreeMap<String, Cliente> mapaClienteAlfabetico = new TreeMap<>();
 	
 	
 	public Cliente(String cargo, String nome, String cpf, String senha) {
@@ -30,7 +32,10 @@ public class Cliente extends Conta {
 		this.senha = senha ;
 	}
 
-	
+	public void informacoes() {
+		Conta conta = Conta.mapaConta.get(this.cpf);
+		System.out.printf("Nome: %s, CPF: %s, AG: %d\n", this.nome, this.cpf, conta.getAgencia());
+	}
 
 	public String getNome() {
 		return nome;

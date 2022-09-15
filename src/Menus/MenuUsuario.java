@@ -143,7 +143,14 @@ public class MenuUsuario {
 		case 1:
 			break;
 		case 2:
-			System.out.println("Digite 2- Relatorio  numero de Contas");
+			int totalNumConta = 0;
+			for(Conta contaAg : Conta.mapaConta.values()) {
+				if(contaAg.getAgencia() == cliente.getAgencia()) {
+					totalNumConta++;
+				}
+			}
+			System.out.printf("O Número Total de Contas Administradas é de: %d\n", totalNumConta);
+			
 			System.out.println("Você deseja fazer outra operação?");
 			System.out.println("1 - Para sim || 2 - Para não");
 			int sim = sc.nextInt();
@@ -155,7 +162,9 @@ public class MenuUsuario {
 			break;
 
 		case 3:
-			System.out.println("Digite 3 - Relatório com as informações de Nome, CPF e Agência");
+			for (Cliente clienteAlf : Cliente.mapaClienteAlfabetico.values()) {
+				clienteAlf.informacoes();
+			}
 			System.out.println("Você deseja fazer outra operação?");
 			System.out.println("1 - Para sim || 2 - Para não");
 			sim = sc.nextInt();
@@ -165,11 +174,10 @@ public class MenuUsuario {
 				menuLogin.MenuInicial();				}
 			break;
 		case 4:
-			System.out.println("Digite 4 - Relatorio com valor Total saldo");
 			double capital = 0;
-			for( Conta conta2 : Conta.mapaConta.values()) {
-				capital += conta2.getSaldo();
-			}System.out.printf("Total de capital armazenado no banco %2.f", capital);
+			for( String cpf : Conta.mapaConta.keySet()) {
+				capital += Conta.mapaConta.get(cpf).getSaldo();
+			}System.out.printf("Total de capital armazenado no banco %.2f\n", capital);
 			System.out.println("Você deseja fazer outra operação?");
 			System.out.println("1 - Para sim || 2 - Para não");
 			sim = sc.nextInt();
@@ -178,6 +186,9 @@ public class MenuUsuario {
 			}else {
 				menuLogin.MenuInicial();				}
 			break;
+		default: 
+			menuLogin.MenuOpcoes(conta, cliente);
+			
 		}
 
 	}
