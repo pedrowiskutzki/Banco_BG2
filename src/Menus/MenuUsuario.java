@@ -4,6 +4,7 @@ import java.util.Scanner;
 
 import Cliente.Cliente;
 import Conta.Conta;
+import MenuEnum.EnumFuncionario;
 
 public class MenuUsuario {
 	static Scanner sc = new Scanner(System.in);
@@ -13,19 +14,20 @@ public class MenuUsuario {
 
 		System.out.println("====================================================");
 		System.out.println("||               Bem Vindo ao Menu                ||");
-		if(cliente.getCargo().equals("GERENTE"))
+		if(cliente.getCargo().equalsIgnoreCase(EnumFuncionario.GERENTE.getNome()))
 		{
 			System.out.println("||                    GERENTE                     ||");
 		}
-		else if (cliente.getCargo().equals("DIRETOR")) 
+		else if (cliente.getCargo().equalsIgnoreCase(EnumFuncionario.DIRETOR.getNome()))
 		{
 			System.out.println("||                    DIRETOR                     ||");	
 		}
-		else if (cliente.getCargo().equals("PRESIDENTE")) 
+		else if (cliente.getCargo().equalsIgnoreCase(EnumFuncionario.PRESIDENTE.getNome()))
 		{
 			System.out.println("||                  Sr.PRESIDENTE                 ||");
-		}else {
-			System.out.println("||             Sinta-se a vontade                 ||");
+		} else {			
+			System.out.println("||             Sinta-se a vontade                 ||"); 
+	    }
 		System.out.println("====================================================");
 		System.out.println("");
 		System.out.println("DIGITE 1 PARA REALIZAR UM SAQUE, TRANSFERÊNCIA OU DEPÓSITO");
@@ -67,8 +69,10 @@ public class MenuUsuario {
 					menuLogin.MenuInicial();				}
 				break;
 			case 2:
+				System.out.println("Qual o valor do deposito ?" );
 				break;
 			case 3:
+				System.out.println("Qual o valor do saque ?");
 				break;
 			default:
 				System.out.println("Você escolheu uma opção inexistente.");
@@ -134,6 +138,6 @@ public class MenuUsuario {
 //	}
 //
 //	public void menuCliente(Conta conta) {
-		System.out.println("oieee");
-	}
+		
 }
+

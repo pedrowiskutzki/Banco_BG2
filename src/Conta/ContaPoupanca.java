@@ -8,7 +8,7 @@ public class ContaPoupanca extends Conta {
 	private double rendimento = 0.5;
 	private double depositoRendimento;
 
-	public ContaPoupanca( String tipo ,  String cpf, double saldo, String agencia ) {
+	public ContaPoupanca( String tipo ,  String cpf, double saldo, int agencia ) {
 		super( tipo, cpf, saldo, agencia);
 	}
 		

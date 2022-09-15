@@ -30,8 +30,26 @@ public class MenuLogin {
 				System.out.println("Você está logado!");
 				MenuOpcoes(conta, cliente);
 			}
-		} else
+		} 
+		while (conta == null || cliente == null) {
+			
 			System.out.println("Voce digitou cpf ou senha incorretos");
+			
+			System.out.println("Escreva o CPF: ");
+			cpf = in.next();
+			System.out.println("Escreva a Senha: ");
+			senha = in.next();
+			
+			conta = Conta.mapaConta.get(cpf);
+			cliente = Cliente.mapaCliente.get(cpf);
+			
+			if (conta != null && cliente != null) {
+				if (cliente.getSenha().equalsIgnoreCase(senha)) {
+					System.out.println("Você está logado!");
+					MenuOpcoes(conta, cliente);
+				}
+			} 
+		}
 	}
 
 	public void MenuOpcoes(Conta conta, Cliente cliente) {

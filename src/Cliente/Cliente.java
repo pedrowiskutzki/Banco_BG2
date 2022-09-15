@@ -21,6 +21,7 @@ public class Cliente extends Conta {
 		this.nome = nome;
 		this.cpf = cpf;
 		this.senha = senha;
+		this.cargo = cargo;
 	}
 	
 	public Cliente(String cpf, String senha) {

@@ -7,13 +7,13 @@ public abstract class Conta {
 	protected String tipo;
 	protected String cpf;
 	protected double saldo;
-	protected String agencia;
+	protected int agencia;
 	
 	public static Map<String, Conta> mapaConta = new HashMap<>();
 		
 	public Conta() {	
 	}
-	public Conta( String tipo, String cpf, double saldo, String agencia) {	
+	public Conta( String tipo, String cpf, double saldo, int agencia) {	
 		 super();		 
 		 this.tipo = tipo; 
 		 this.cpf = cpf;		
