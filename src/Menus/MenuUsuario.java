@@ -72,76 +72,37 @@ public class MenuUsuario {
 				break;
 			case 2:
 				System.out.println("Qual o valor do deposito ?" );
-				
-				
+				double valorDeposito = sc.nextDouble();
+				conta.Depositar(valorDeposito);
+				System.out.println("Depósito realizado com sucesso!");
+				System.out.println("Você deseja fazer outra operação?");
+				System.out.println("1 - Para sim || 2 - Para não");
+				int s = sc.nextInt();
+				if(s==1) {
+					menuLogin.MenuOpcoes(conta, cliente);
+				}else {
+					menuLogin.MenuInicial();				}
 				break;
 			case 3:
 				System.out.println("Qual o valor do saque ?");
+				double valorSaque = sc.nextDouble();
+				System.out.println(conta.Sacar(valorSaque));
+				System.out.println("1 - Para sim || 2 - Para não");
+				int si = sc.nextInt();
+				if(si==1) {
+					menuLogin.MenuOpcoes(conta, cliente);
+				}else {
+					menuLogin.MenuInicial();				}			
 				break;
 			default:
-				System.out.println("Você escolheu uma opção inexistente.");
+				System.out.println("Você escolheu uma opção inexistente.");				
 			}
 			break;
 		case 2:
-			System.out.println("DIGITE 1 PARA RELATORIO DE CONTA CORRENTE");
-			System.out.println("DIGITE 2 PARA RELATÓRIO DE CONTA CONTA POUPANCA");
-			System.out.println("DIGITE 3 PARA RELATÓRIO DE CONTA CONTAS DA MESMA AGENCIA");
-
-			opcao = sc.nextInt();
-
-			switch (opcao) {
-			case 1:
-				break;
-			case 2:
-				break;
-			case 3:
-				break;
-			default:
-				System.out.println("Você escolheu uma opção inexistente.");
-			}
+			////////////////
 		default:
 			System.out.println("Você escolheu uma opção inexistente.");
 		}
-	}
-
-//	public  void menuDiretor(Conta conta) {
-//		
-//		System.out.println("====================================================");
-//		System.out.println("||               Bem Vindo ao Menu                ||");
-//		System.out.println("||                    DIRETOR                     ||");
-//		System.out.println("====================================================");
-//		System.out.println("");
-//
-//		System.out.println("Sr. Diretor, você deseja realizar o relatório?");
-//		System.out.println("1 - Para sim || 2 - Para não");
-//		int opcao = sc.nextInt();
-//		if(opcao == 1) {
-//			//fazer relatorio
-//		}else if(opcao ==2 ){
-//			System.out.println("Obrigado por usar o progama!");
-//		}else {
-//			System.out.println("Opção não reconhecida!");
-//		}
-//	}
-//
-//	public  void menuPresidente(Conta conta) {
-//		
-//		System.out.println("====================================================");
-//		System.out.println("||               Bem Vindo ao seu Menu            ||");
-//		System.out.println("||                  Sr.PRESIDENTE                 ||");
-//		System.out.println("====================================================");
-//		System.out.println("");
-//		
-//		int opcao = sc.nextInt();
-//		
-//		switch(opcao){
-//		case 1:
-//			System.out.println("so teste");
-//			break;
-//		}
-//	}
-//
-//	public void menuCliente(Conta conta) {
-		
+	}	
 }
 
