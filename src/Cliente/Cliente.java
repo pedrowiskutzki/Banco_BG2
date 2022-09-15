@@ -7,8 +7,6 @@ import Conta.Conta;
 
 public class Cliente extends Conta {
 	
-	private String TIPO = "CLIENTE";
-	
 	private String nome;
 	private String cpf;
 	private String senha;
@@ -16,12 +14,13 @@ public class Cliente extends Conta {
 
 	public static Map<String, Cliente> mapaCliente = new HashMap<>();
 	
-	public Cliente(String nome, String cpf, String senha, String cargo) {
+	public Cliente(String cargo, String nome, String cpf, String senha) {
 		super();
+		this.cargo = cargo;
 		this.nome = nome;
 		this.cpf = cpf;
 		this.senha = senha;
-		this.cargo = cargo;
+		
 	}
 	
 	public Cliente(String cpf, String senha) {

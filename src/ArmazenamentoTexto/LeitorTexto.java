@@ -16,7 +16,7 @@ import Funcionarios.Presidente;
 public class LeitorTexto {
 
 	public Map<String, Conta> leituratexto() {
-		String read = "C:\\Users\\Residente20222\\Documents\\git\\Banco_BG2\\src\\TESTE.txt";
+		String read = "C:\\Serratec2022.2\\Java\\Trabalho Final Java\\Banco_Grupo2\\src\\TESTE.txt";
 		try (BufferedReader re = new BufferedReader(new FileReader(read))) {
 
 			String line = re.readLine();
@@ -26,15 +26,15 @@ public class LeitorTexto {
 
 				if (teste[0].equals("CLIENTE")) 
 				{	
-					Cliente cl1 = new Cliente(teste[1], teste[2],teste[3],teste[0]);
+					Cliente cl1 = new Cliente(teste[0], teste[1], teste[2], teste[3]);
 					Cliente.mapaCliente.put(cl1.getCpf(), cl1);
 				}	
 				else if (teste[0].equals("GERENTE")) {
-					Gerente g1 = new Gerente(teste[0], teste[2],teste[1],teste[3], Integer.parseInt(teste[4]));
+					Gerente g1 = new Gerente(teste[0], teste[1],teste[2],teste[3], Integer.parseInt(teste[4]));
 					Cliente.mapaCliente.put(g1.getCpf(),g1);
 				}
 				else if (teste[0].equals("DIRETOR")) {
-					Diretor d1 = new Diretor(teste[0], teste[2],teste[1],teste[3], Integer.parseInt(teste[4]));
+					Diretor d1 = new Diretor(teste[0], teste[1],teste[2],teste[3], Integer.parseInt(teste[4]));
 					Cliente.mapaCliente.put(d1.getCpf(), d1);
 				}
 				else if (teste[0].equals("PRESIDENTE")) {

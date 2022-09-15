@@ -37,9 +37,11 @@ public class MenuUsuario {
 
 		switch (opcao) {
 		case 1:
-			System.out.println("DIGITE 1 PARA TRANSFERÊNCIA");
-			System.out.println("DIGITE 2 PARA DEPÓSITO");
-			System.out.println("DIGITE 3 PARA SAQUE");
+			System.out.println("===========DIGITE===========");
+			System.out.println(" 1 - PARA TRANSFERÊNCIA");
+			System.out.println(" 2 - PARA DEPÓSITO");
+			System.out.println(" 3 - PARA SAQUE");
+			System.out.println("============================");
 
 			opcao = sc.nextInt();
 
@@ -55,7 +57,7 @@ public class MenuUsuario {
 					if (transferiu) {
 						System.out.println("Transferência realizada com sucesso!");	
 					}else {
-						System.out.println("Transfêrencia não realizada");
+						System.out.println("Saldo insuficiente");
 					}	
 				}else {
 					System.out.println("Esta conta não existe.");
@@ -70,6 +72,8 @@ public class MenuUsuario {
 				break;
 			case 2:
 				System.out.println("Qual o valor do deposito ?" );
+				
+				
 				break;
 			case 3:
 				System.out.println("Qual o valor do saque ?");
