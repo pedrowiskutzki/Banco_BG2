@@ -18,10 +18,11 @@ public class MenuLogin {
 		System.out.println("");
 
 		Scanner in = new Scanner(System.in);
-		System.out.println("Escreva o CPF: ");
+		System.out.println("====================Digite o CPF====================");
 		String cpf = in.next();
-		System.out.println("Escreva a Senha: ");
+		System.out.println("===================Digite a Senha===================");
 		String senha = in.next();
+		System.out.println("\n \n \n \n");
 
 		Conta conta = Conta.mapaConta.get(cpf);
 		Cliente cliente = Cliente.mapaCliente.get(cpf);
@@ -36,9 +37,9 @@ public class MenuLogin {
 			
 			System.out.println("Voce digitou cpf ou senha incorretos");
 			
-			System.out.println("Escreva o CPF: ");
+			System.out.println("====================Digite o CPF====================");
 			cpf = in.next();
-			System.out.println("Escreva a Senha: ");
+			System.out.println("===================Digite a Senha===================");
 			senha = in.next();
 			
 			conta = Conta.mapaConta.get(cpf);

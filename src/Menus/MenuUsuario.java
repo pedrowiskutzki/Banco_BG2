@@ -31,8 +31,9 @@ public class MenuUsuario {
 		}
 		System.out.println("====================================================");
 		System.out.println("");
-		System.out.println("DIGITE 1 PARA REALIZAR UM SAQUE, TRANSFERÊNCIA OU DEPÓSITO");
-		System.out.println("DIGITE 2 PARA VERIFICAR RELATORIOS");
+		System.out.println("=======================DIGITE=======================");
+		System.out.println(" 1 - PARA REALIZAR SAQUE / TRANSFERÊNCIA / DEPÓSITO");
+		System.out.println(" 2 - PARA VERIFICAR RELATORIOS");
 
 		int opcao = sc.nextInt();
 
@@ -56,12 +57,12 @@ public class MenuUsuario {
 					Double valor = sc.nextDouble();
 					boolean transferiu = conta.Tranferir(contaDestino, valor);
 					if (transferiu) {
-						System.out.println("Transferência realizada com sucesso!");
+						System.out.println("***Transferência realizada com sucesso!***");
 					} else {
-						System.out.println("Saldo insuficiente");
+						System.out.println("***Saldo insuficiente***");
 					}
 				} else {
-					System.out.println("Esta conta não existe.");
+					System.out.println("***Esta conta não existe***");
 				}
 				System.out.println("Você deseja fazer outra operação?");
 				System.out.println("1 - Para sim || 2 - Para não");
@@ -76,7 +77,7 @@ public class MenuUsuario {
 				System.out.println("Qual o valor do deposito ?");
 				double valorDeposito = sc.nextDouble();
 				conta.Depositar(valorDeposito);
-				System.out.println("Depósito realizado com sucesso!");
+				System.out.println("***Depósito realizado com sucesso!***");
 				System.out.println("Você deseja fazer outra operação?");
 				System.out.println("1 - Para sim || 2 - Para não");
 				int s = sc.nextInt();
@@ -92,9 +93,9 @@ public class MenuUsuario {
 				boolean sacou = conta.Sacar(valorSaque);
 				if (sacou) {
 					escritaTexto.ComprovanteSaque(conta, valorSaque);
-					System.out.println("Saque Efetuado Com Sucesso");
+					System.out.println("***Saque Efetuado Com Sucesso***");
 				} else {
-					System.out.println("Saldo Insuficiente");
+					System.out.println("***Saldo Insuficiente***");
 				}
 				System.out.println("1 - Para sim || 2 - Para não");
 				int si = sc.nextInt();
@@ -105,7 +106,7 @@ public class MenuUsuario {
 				}
 				break;
 			default:
-				System.out.println("Você escolheu uma opção inexistente.");
+				System.out.println("***Você escolheu uma opção inexistente***");
 				menuLogin.MenuOpcoes(conta, cliente);
 			}
 			break;
@@ -133,22 +134,23 @@ public class MenuUsuario {
 	}
 
 	public void MenuRelatorio(int cargo, Conta conta, Cliente cliente) throws IOException {
+		System.out.println("=======================DIGITE=======================");
 		if (conta.getTipo().equalsIgnoreCase(EnumConta.CONTACORRENTE.getNome())) {
-			System.out.println("Digite 1 para receber o relatorio de tributação");
+			System.out.println(" 1 - para receber o relatorio de tributação");
 						
 		} else {
-			System.out.println("Digite 1 para receber opção de rendimento");
+			System.out.println(" 1 - Para receber opção de rendimento da Poupança");
 		}
 		if (cargo > 1) {
-			System.out.println("Digite 2- Relatorio  numero de Contas");
+			System.out.println(" 2 - Relatorio  numero de Contas");
 		}
 		if (cargo > 2) {
-			System.out.println("Digite 3 - Relatório com as informações de Nome, CPF e Agência");
+			System.out.println(" 3 - Relatório com as informações de Nome, CPF e Agência");
 		}
 		if (cargo > 3) {
-			System.out.println("Digite 4 - Relatorio com valor Total saldo");
+			System.out.println(" 4 - Relatorio com valor Total saldo");
 		}
-		System.out.println("Digite 5 para Sair");
+		System.out.println(" 5 - para Sair");
 
 		int opcao2 = sc.nextInt();
 		switch (opcao2) {
