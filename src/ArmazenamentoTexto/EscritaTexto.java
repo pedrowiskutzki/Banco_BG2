@@ -213,5 +213,31 @@ public class EscritaTexto {
 		
 		buffWrite.close();
 	}
+	
+	public void infos() throws IOException{
+		 
+		String read = BASIC_PATH + "Relatórios Informacoes Contas" + EXTENSAO;
+    	BufferedWriter buffWrite = new BufferedWriter(new FileWriter(read, true));
+    	
+    	String linha = "===== Relatórios Informacoes Contas =====";          
+      	buffWrite.append(linha + "\n");
+      	
+      	linha = "====================================";
+		buffWrite.append(linha + "\n");
+		
+		for (Cliente clienteAlf : Cliente.mapaClienteAlfabetico.values()) {	
+			buffWrite.append(clienteAlf.informacoes());    	
+		} 
+		
+		DateTimeFormatter dtf = DateTimeFormatter.ofPattern("dd/MM/yyyy HH:mm:ss");
+        buffWrite.append("\n" + dtf.format(LocalDateTime.now()) + "\n");
+        
+        linha = "====================================";
+		buffWrite.append(linha + "\n");
+		
+		buffWrite.close();
+		
+	}
+	
 }
 

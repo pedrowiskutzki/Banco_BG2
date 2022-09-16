@@ -32,9 +32,9 @@ public class Cliente extends Conta {
 		this.senha = senha ;
 	}
 
-	public void informacoes() {
+	public CharSequence informacoes() {
 		Conta conta = Conta.mapaConta.get(this.cpf);
-		System.out.printf("Nome: %s, CPF: %s, AG: %d\n", this.nome, this.cpf, conta.getAgencia());
+		return "Nome: " + getNome() + ", CPF: " + getCpf() + ", AG: "+ conta.getAgencia() + "\n";  
 	}
 
 	public String getNome() {

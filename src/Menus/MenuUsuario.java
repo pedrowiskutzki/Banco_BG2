@@ -209,9 +209,9 @@ public class MenuUsuario {
 			break;
 
 		case 3:
-			for (Cliente clienteAlf : Cliente.mapaClienteAlfabetico.values()) {
-				clienteAlf.informacoes();
-			}
+			escritaTexto.infos();
+			System.out.println("Rendimento Gerado!");	
+			
 			System.out.println("Você deseja fazer outra operação?");
 			System.out.println("1 - Para sim || 2 - Para não");
 			sim = sc.nextInt();
