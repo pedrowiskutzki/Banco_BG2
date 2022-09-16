@@ -4,6 +4,8 @@ import java.util.Scanner;
 
 import Cliente.Cliente;
 import Conta.Conta;
+import Conta.ContaCorrente;
+import Conta.ContaPoupanca;
 import MenuEnum.EnumConta;
 import MenuEnum.EnumFuncionario;
 
@@ -124,6 +126,7 @@ public class MenuUsuario {
 	public void MenuRelatorio(int cargo, Conta conta, Cliente cliente) {
 		if (conta.getTipo().equalsIgnoreCase(EnumConta.CONTACORRENTE.getNome())) {
 			System.out.println("Digite 1 para receber o relatorio de tributação");
+						
 		} else {
 			System.out.println("Digite 1 para receber opção de rendimento");
 		}
@@ -140,7 +143,19 @@ public class MenuUsuario {
 
 		int opcao2 = sc.nextInt();
 		switch (opcao2) {
-		case 1:
+		case 1: 
+			if (conta.getTipo().equalsIgnoreCase(EnumConta.CONTACORRENTE.getNome())) {
+				ContaCorrente contaCorrente = (ContaCorrente) conta;
+				System.out.println(contaCorrente.RelatorioContaCorrente());
+			} else {
+				ContaPoupanca contaPoupanca = (ContaPoupanca) conta;
+				System.out.println("Digite o valor da sua simulação: ");
+				double valorSimulado = sc.nextDouble();
+				System.out.println("Digite quantos meses deseja fazer a simulação: ");
+				int mesesSimulado = sc.nextInt();
+				System.out.println(contaPoupanca.rendimentoPoupanca(mesesSimulado, valorSimulado));
+			}
+			
 			break;
 		case 2:
 			int totalNumConta = 0;
