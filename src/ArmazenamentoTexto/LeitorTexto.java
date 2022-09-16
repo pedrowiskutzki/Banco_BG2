@@ -14,9 +14,12 @@ import Funcionarios.Gerente;
 import Funcionarios.Presidente;
 
 public class LeitorTexto {
+	
+	final static String BASIC_PATH = "../temp/";
+	final static String EXTENSAO = ".txt";
 
 	public Map<String, Conta> leituratexto() {
-		String read = "C:\\Curso-serratec-2022\\programacaoOrientadaaObjeto\\projetofinal\\Banco_BG2\\src\\LeitorDados.txt";
+		String read = BASIC_PATH + "LeitorDados" + EXTENSAO;
 		try (BufferedReader re = new BufferedReader(new FileReader(read))) {
 
 			String line = re.readLine();

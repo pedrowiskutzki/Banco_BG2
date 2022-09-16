@@ -58,6 +58,7 @@ public class MenuUsuario {
 					boolean transferiu = conta.Tranferir(contaDestino, valor);
 					if (transferiu) {
 						System.out.println("***Transferência realizada com sucesso!***");
+						escritaTexto.ComprovanteTransferencia(conta, valor, contaDestino);
 					} else {
 						System.out.println("***Saldo insuficiente***");
 					}
@@ -76,8 +77,13 @@ public class MenuUsuario {
 			case 2:
 				System.out.println("Qual o valor do deposito ?");
 				double valorDeposito = sc.nextDouble();
-				conta.Depositar(valorDeposito);
-				System.out.println("***Depósito realizado com sucesso!***");
+				boolean depositou = conta.Depositar(valorDeposito);
+				if(depositou) {
+					System.out.println("***Depósito realizado com sucesso!***");
+					escritaTexto.ComprovanteDeposito(conta, valorDeposito);
+				}else {
+					System.out.println("***Depósito não realizado!***");
+				}
 				System.out.println("Você deseja fazer outra operação?");
 				System.out.println("1 - Para sim || 2 - Para não");
 				int s = sc.nextInt();

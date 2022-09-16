@@ -42,9 +42,14 @@ public abstract class Conta {
 			return true;		
 		}
 	}	
-	public void Depositar(double deposito) {
+	public boolean Depositar(double deposito) {
+		if (deposito > 0) {
 		this.saldo = saldo + deposito;
+		return true;
+		}
+		return false;
 	}
+		
 	public boolean Tranferir(Conta destino, double valor) {
 		if (this.saldo >= valor) {
 			this.saldo = this.saldo - valor;

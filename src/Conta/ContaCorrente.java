@@ -33,10 +33,14 @@ public class ContaCorrente extends Conta{
 		}
 		
 		@Override
-		public void Depositar(double deposito) {
-			this.saldo = saldo + deposito;
-			numDepositos++;
-			this.saldo = saldo - 0.10;
+		public boolean Depositar(double deposito) {
+			if(deposito > 0) {
+				this.saldo = saldo + deposito;
+				numDepositos++;
+				this.saldo = saldo - 0.10;
+				return true;
+			}
+			return false;
 		}
 		
 		@Override
