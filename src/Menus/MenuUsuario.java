@@ -142,28 +142,29 @@ public class MenuUsuario {
 	public void MenuRelatorio(int cargo, Conta conta, Cliente cliente) throws IOException {
 		System.out.println("=======================DIGITE=======================");
 		if (conta.getTipo().equalsIgnoreCase(EnumConta.CONTACORRENTE.getNome())) {
-			System.out.println(" 1 - para receber o relatorio de tributação");
+			System.out.println(" 1 - Para receber o relatório de tributação");
 						
 		} else {
 			System.out.println(" 1 - Para receber opção de rendimento da Poupança");
 		}
 		if (cargo > 1) {
-			System.out.println(" 2 - Relatorio  numero de Contas");
+			System.out.println(" 2 - Relatório  numero de Contas");
 		}
 		if (cargo > 2) {
 			System.out.println(" 3 - Relatório com as informações de Nome, CPF e Agência");
 		}
 		if (cargo > 3) {
-			System.out.println(" 4 - Relatorio com valor Total saldo");
+			System.out.println(" 4 - Relatório com valor Total saldo");
 		}
-		System.out.println(" 5 - para Sair");
+		System.out.println(" 5 - Para Sair");
 
 		int opcao2 = sc.nextInt();
 		switch (opcao2) {
 		case 1: 
 			if (conta.getTipo().equalsIgnoreCase(EnumConta.CONTACORRENTE.getNome())) {
 				ContaCorrente contaCorrente = (ContaCorrente) conta;
-				System.out.println(contaCorrente.RelatorioContaCorrente());
+				escritaTexto.RelatorioContaCorrente(contaCorrente);
+				System.out.println("Relatório Gerado!");
 				
 				System.out.println("Você deseja fazer outra operação?");
 				System.out.println("1 - Para sim || 2 - Para não");

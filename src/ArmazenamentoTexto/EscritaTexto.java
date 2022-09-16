@@ -6,9 +6,12 @@ import java.io.IOException;
 import java.nio.file.FileSystem;
 import java.nio.file.FileSystems;
 import java.nio.file.Path;
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 import java.util.Scanner;
 
 import Conta.Conta;
+import Conta.ContaCorrente;
 
 public class EscritaTexto {
 
@@ -37,6 +40,10 @@ public class EscritaTexto {
         linha = "VALOR RETIRADO: " + valorSaque;
         buffWrite.append(linha + "\n");
         
+        
+        DateTimeFormatter dtf = DateTimeFormatter.ofPattern("dd/MM/yyyy HH:mm:ss");
+        buffWrite.append(dtf.format(LocalDateTime.now()) + "\n");
+        
         linha = "==========";
         buffWrite.append(linha + "\n");        
 
@@ -64,6 +71,9 @@ public class EscritaTexto {
         
         linha = "VALOR DEPOSITADO: " + valorDeposito;
         buffWrite.append(linha + "\n");
+        
+        DateTimeFormatter dtf = DateTimeFormatter.ofPattern("dd/MM/yyyy HH:mm:ss");
+        buffWrite.append(dtf.format(LocalDateTime.now()) + "\n");
         
         linha = "==========";
         buffWrite.append(linha + "\n");        
@@ -102,11 +112,42 @@ public class EscritaTexto {
         linha = "AGENCIA: " + contaDestino.getAgencia();
         buffWrite.append(linha + "\n");
         
+        DateTimeFormatter dtf = DateTimeFormatter.ofPattern("dd/MM/yyyy HH:mm:ss");
+        buffWrite.append(dtf.format(LocalDateTime.now()) + "\n");
+        
         linha = "==========";
         buffWrite.append(linha + "\n");        
 
         buffWrite.close();
     }
+    
+    public void RelatorioContaCorrente(ContaCorrente conta) throws IOException {
+		String read = BASIC_PATH + "Relatorios Conta Corrente" + EXTENSAO;
+    	BufferedWriter buffWrite = new BufferedWriter(new FileWriter(read, true));
+    	
+    	String linha = "===== Relatorio Conta Corrente =====";          
+      	buffWrite.append(linha + "\n");
+      	
+      	linha = "====================================";
+		buffWrite.append(linha + "\n");
+	    
+      	buffWrite.append("Relatorio CPF = " + conta.getCpf()+"\n");
+      	
+      	buffWrite.append( "O total gasto com Saque foi de: R$ " + conta.getNumSaques() * 0.10 + "\n" +
+			"O total gasto com transfêrencia foi de: R$ "+ conta.getNumTransferencias() * 0.20 + "\n" +
+			"O total gasto com depositos foi de: R$ "+ conta.getNumDepositos() * 0.10 + "\n" + 
+			"Para cada saque é cobrado o valor de 10 centavos\nPara cada depósito é cobrado o valor de 10 centavos\nPara cada transferência é cobrado o valor de 20 centavos\n");	
+			
+        
+        DateTimeFormatter dtf = DateTimeFormatter.ofPattern("dd/MM/yyyy HH:mm:ss");
+        buffWrite.append(dtf.format(LocalDateTime.now()) + "\n");
+        
+        
+	    linha = "====================================";
+	    buffWrite.append(linha + "\n");
+	        
+	    buffWrite.close();		  				
+	}
 }
 
 

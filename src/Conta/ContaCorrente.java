@@ -1,17 +1,41 @@
 package Conta;
 
+import java.io.BufferedWriter;
+import java.io.FileWriter;
+import java.io.IOException;
+
 public class ContaCorrente extends Conta{
 	
 		private static int numTransferencias;
 		private static int numSaques;
 		private static int numDepositos;
 		
+		final static String BASIC_PATH = "../temp/";
+		final static String EXTENSAO = ".txt";
 
 		public ContaCorrente( String tipo , String cpf, double saldo, int agencia) {
-			super( tipo, cpf, saldo, agencia);
-			
-			
+			super( tipo, cpf, saldo, agencia);		
 		}
+		
+		
+
+		public static int getNumTransferencias() {
+			return numTransferencias;
+		}
+
+
+
+		public static int getNumSaques() {
+			return numSaques;
+		}
+
+
+
+		public static int getNumDepositos() {
+			return numDepositos;
+		}
+
+
 
 		@Override
 		public String toString() {
@@ -55,21 +79,6 @@ public class ContaCorrente extends Conta{
 				return false;				
 			}
 		}
-		
-		
-		public String RelatorioContaCorrente() {
-			return "O total gasto com Saque foi de: R$ " + numSaques * 0.10 + "\n" +
-				"O total gasto com transfêrencia foi de: R$ "+ numTransferencias * 0.20 + "\n" +
-				"O total gasto com depositos foi de: R$ "+ numDepositos * 0.10 + "\n" + 
-				"Para cada saque é cobrado o valor de 10 centavos\nPara cada depósito é cobrado o valor de 10 centavos\nPara cada transferência é cobrado o valor de 20 centavos";	
-			
-		}
-
-
-		
-		
-		
-		
 		
 }
 

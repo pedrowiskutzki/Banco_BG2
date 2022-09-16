@@ -1,0 +1,53 @@
+O total gasto com Saque foi de: R$ 0.0
+O total gasto com transfêrencia foi de: R$ 0.0
+O total gasto com depositos foi de: R$ 0.0
+Para cada saque é cobrado o valor de 10 centavos
+Para cada depósito é cobrado o valor de 10 centavos
+Para cada transferência é cobrado o valor de 20 centavos==========
+===== Relatorio Conta Corrente =====
+O total gasto com Saque foi de: R$ 0.0
+O total gasto com transfêrencia foi de: R$ 0.0
+O total gasto com depositos foi de: R$ 0.0
+Para cada saque é cobrado o valor de 10 centavos
+Para cada depósito é cobrado o valor de 10 centavos
+Para cada transferência é cobrado o valor de 20 centavos
+==========
+===== Relatorio Conta Corrente =====
+O total gasto com Saque foi de: R$ 0.0
+O total gasto com transfêrencia foi de: R$ 0.0
+O total gasto com depositos foi de: R$ 0.0
+Para cada saque é cobrado o valor de 10 centavos
+Para cada depósito é cobrado o valor de 10 centavos
+Para cada transferência é cobrado o valor de 20 centavos
+====================================
+===== Relatorio Conta Corrente =====
+====================================
+Relatorio CPF = 111
+O total gasto com Saque foi de: R$ 0.2
+O total gasto com transfêrencia foi de: R$ 0.0
+O total gasto com depositos foi de: R$ 0.1
+Para cada saque é cobrado o valor de 10 centavos
+Para cada depósito é cobrado o valor de 10 centavos
+Para cada transferência é cobrado o valor de 20 centavos
+====================================
+===== Relatorio Conta Corrente =====
+====================================
+Relatorio CPF = 111
+O total gasto com Saque foi de: R$ 0.2
+O total gasto com transfêrencia foi de: R$ 0.2
+O total gasto com depositos foi de: R$ 0.1
+Para cada saque é cobrado o valor de 10 centavos
+Para cada depósito é cobrado o valor de 10 centavos
+Para cada transferência é cobrado o valor de 20 centavos
+====================================
+===== Relatorio Conta Corrente =====
+====================================
+Relatorio CPF = 111
+O total gasto com Saque foi de: R$ 0.0
+O total gasto com transfêrencia foi de: R$ 0.2
+O total gasto com depositos foi de: R$ 0.0
+Para cada saque é cobrado o valor de 10 centavos
+Para cada depósito é cobrado o valor de 10 centavos
+Para cada transferência é cobrado o valor de 20 centavos
+16/09/2022 18:20:56
+====================================
