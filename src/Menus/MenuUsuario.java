@@ -158,6 +158,15 @@ public class MenuUsuario {
 			if (conta.getTipo().equalsIgnoreCase(EnumConta.CONTACORRENTE.getNome())) {
 				ContaCorrente contaCorrente = (ContaCorrente) conta;
 				System.out.println(contaCorrente.RelatorioContaCorrente());
+				
+				System.out.println("Você deseja fazer outra operação?");
+				System.out.println("1 - Para sim || 2 - Para não");
+				int sim = sc.nextInt();
+				if (sim == 1) {
+					menuLogin.MenuOpcoes(conta, cliente);
+				} else {
+					menuLogin.MenuInicial();
+				}
 			} else {
 				ContaPoupanca contaPoupanca = (ContaPoupanca) conta;
 				System.out.println("Digite o valor da sua simulação: ");
@@ -165,6 +174,15 @@ public class MenuUsuario {
 				System.out.println("Digite quantos meses deseja fazer a simulação: ");
 				int mesesSimulado = sc.nextInt();
 				System.out.println(contaPoupanca.rendimentoPoupanca(mesesSimulado, valorSimulado));
+				
+				System.out.println("Você deseja fazer outra operação?");
+				System.out.println("1 - Para sim || 2 - Para não");
+				int sim = sc.nextInt();
+				if (sim == 1) {
+					menuLogin.MenuOpcoes(conta, cliente);
+				} else {
+					menuLogin.MenuInicial();
+				}
 			}
 			
 			break;
