@@ -180,7 +180,8 @@ public class MenuUsuario {
 				double valorSimulado = sc.nextDouble();
 				System.out.println("Digite quantos meses deseja fazer a simulação: ");
 				int mesesSimulado = sc.nextInt();
-				System.out.println(contaPoupanca.rendimentoPoupanca(mesesSimulado, valorSimulado));
+				escritaTexto.rendimentoPoupanca(contaPoupanca,mesesSimulado,valorSimulado);
+				System.out.println("Rendimento Gerado!");
 				
 				System.out.println("Você deseja fazer outra operação?");
 				System.out.println("1 - Para sim || 2 - Para não");
@@ -194,13 +195,8 @@ public class MenuUsuario {
 			
 			break;
 		case 2:
-			int totalNumConta = 0;
-			for(Conta contaAg : Conta.mapaConta.values()) {
-				if(contaAg.getAgencia() == cliente.getAgencia()) {
-					totalNumConta++;
-				}
-			}
-			System.out.printf("O Número Total de Contas Administradas é de: %d\n", totalNumConta);
+			escritaTexto.numTotalContas(conta, cliente);
+			System.out.println("Rendimento Gerado!");			
 			
 			System.out.println("Você deseja fazer outra operação?");
 			System.out.println("1 - Para sim || 2 - Para não");

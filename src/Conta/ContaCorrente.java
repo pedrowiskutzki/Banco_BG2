@@ -35,13 +35,6 @@ public class ContaCorrente extends Conta{
 			return numDepositos;
 		}
 
-
-
-		@Override
-		public String toString() {
-			return "**Tipo de Conta = " + tipo + "**\n" + super.toString();
-		}
-		
 		@Override
 		public boolean Sacar(double valor) {
 			if (this.saldo < valor) {
