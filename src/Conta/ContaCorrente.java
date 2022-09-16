@@ -19,15 +19,15 @@ public class ContaCorrente extends Conta{
 		}
 		
 		@Override
-		public String Sacar(double valor) {
+		public boolean Sacar(double valor) {
 			if (this.saldo < valor) {
-				return "Saldo Insuficiente";
+				return false;
 			} else {
 				double novoSaldo = this.saldo - valor;
 				this.saldo = novoSaldo;
 				numSaques++;
 				this.saldo = novoSaldo - 0.10;
-				return "Saque Efetuado";
+				return true;
 				
 			}
 		}

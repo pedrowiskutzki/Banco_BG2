@@ -1,5 +1,6 @@
 package Menus;
 
+import java.io.IOException;
 import java.util.Scanner;
 
 import Cliente.Cliente;
@@ -7,7 +8,7 @@ import Conta.Conta;
 
 public class MenuLogin {
 
-	public void MenuInicial() {
+	public void MenuInicial() throws IOException {
 		MenuUsuario menuUsuario = new MenuUsuario();
 
 		System.out.println("====================================================");
@@ -31,7 +32,7 @@ public class MenuLogin {
 				MenuOpcoes(conta, cliente);
 			}
 		} 
-		while (conta == null || cliente == null) {
+		while (conta == null || cliente == null || !cliente.getSenha().equalsIgnoreCase(senha)) {
 			
 			System.out.println("Voce digitou cpf ou senha incorretos");
 			
@@ -52,7 +53,7 @@ public class MenuLogin {
 		}
 	}
 
-	public void MenuOpcoes(Conta conta, Cliente cliente) {
+	public void MenuOpcoes(Conta conta, Cliente cliente) throws IOException {
 		MenuUsuario menuUsuario = new MenuUsuario();
 			menuUsuario.Menu(conta, cliente);
 	}

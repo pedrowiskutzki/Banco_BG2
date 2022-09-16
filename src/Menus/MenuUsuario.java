@@ -1,7 +1,9 @@
 package Menus;
 
+import java.io.IOException;
 import java.util.Scanner;
 
+import ArmazenamentoTexto.EscritaTexto;
 import Cliente.Cliente;
 import Conta.Conta;
 import Conta.ContaCorrente;
@@ -12,8 +14,9 @@ import MenuEnum.EnumFuncionario;
 public class MenuUsuario {
 	static Scanner sc = new Scanner(System.in);
 	MenuLogin menuLogin = new MenuLogin();
+	EscritaTexto escritaTexto = new EscritaTexto();
 
-	public void Menu(Conta conta, Cliente cliente) {
+	public void Menu(Conta conta, Cliente cliente) throws IOException {
 
 		System.out.println("====================================================");
 		System.out.println("||               Bem Vindo ao Menu                ||");
@@ -86,7 +89,13 @@ public class MenuUsuario {
 			case 3:
 				System.out.println("Qual o valor do saque ?");
 				double valorSaque = sc.nextDouble();
-				System.out.println(conta.Sacar(valorSaque));
+				boolean sacou = conta.Sacar(valorSaque);
+				if (sacou) {
+					escritaTexto.ComprovanteSaque(conta, valorSaque);
+					System.out.println("Saque Efetuado Com Sucesso");
+				} else {
+					System.out.println("Saldo Insuficiente");
+				}
 				System.out.println("1 - Para sim || 2 - Para não");
 				int si = sc.nextInt();
 				if (si == 1) {
@@ -123,7 +132,7 @@ public class MenuUsuario {
 		}
 	}
 
-	public void MenuRelatorio(int cargo, Conta conta, Cliente cliente) {
+	public void MenuRelatorio(int cargo, Conta conta, Cliente cliente) throws IOException {
 		if (conta.getTipo().equalsIgnoreCase(EnumConta.CONTACORRENTE.getNome())) {
 			System.out.println("Digite 1 para receber o relatorio de tributação");
 						

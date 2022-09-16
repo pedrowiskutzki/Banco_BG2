@@ -1,0 +1,12 @@
+===== SAQUE =====
+DADOS CONTA
+CPF: 333
+AGENCIA: 1
+VALOR RETIRADO: 10.0
+==========
+===== SAQUE =====
+DADOS CONTA
+CPF: 333
+AGENCIA: 1
+VALOR RETIRADO: 20.0
+==========

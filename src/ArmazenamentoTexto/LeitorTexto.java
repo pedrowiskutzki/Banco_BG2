@@ -16,7 +16,7 @@ import Funcionarios.Presidente;
 public class LeitorTexto {
 
 	public Map<String, Conta> leituratexto() {
-		String read = "C:\\Curso-serratec-2022\\programacaoOrientadaaObjeto\\projetofinal\\Banco_BG2\\src\\TESTE.txt";
+		String read = "C:\\Users\\Residente20222\\Desktop\\Nova pasta (2)\\git\\Banco_BG2\\src\\TESTE.txt";
 		try (BufferedReader re = new BufferedReader(new FileReader(read))) {
 
 			String line = re.readLine();

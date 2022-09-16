@@ -33,13 +33,13 @@ public abstract class Conta {
 	public int getAgencia() {
 		return agencia;
 	}
-	public String Sacar(double valor) {
+	public boolean Sacar(double valor) {
 		if (this.saldo < valor) {
-			return "Saldo Insuficiente";
+			return false;
 		} else {
 			double novoSaldo = this.saldo - valor;
 			this.saldo = novoSaldo;
-			return "Saque Efetuado";		
+			return true;		
 		}
 	}	
 	public void Depositar(double deposito) {
