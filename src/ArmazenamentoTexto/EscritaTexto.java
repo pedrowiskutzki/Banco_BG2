@@ -3,31 +3,26 @@ package ArmazenamentoTexto;
 import java.io.BufferedWriter;
 import java.io.FileWriter;
 import java.io.IOException;
-import java.nio.file.FileSystem;
-import java.nio.file.FileSystems;
-import java.nio.file.Path;
 import java.text.DecimalFormat;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
-import java.util.Scanner;
-
 import Cliente.Cliente;
 import Conta.Conta;
 import Conta.ContaCorrente;
+import Conta.ContaPoupanca;
 
 public class EscritaTexto {
 
 	final static String BASIC_PATH = "../temp/";
 	final static String EXTENSAO = ".txt";
-	private int quantMeses;
 
 	public void ComprovanteSaque(Conta conta, double valorSaque) throws IOException {
 
 		String read = BASIC_PATH + "Transacoes" + EXTENSAO;
 		BufferedWriter buffWrite = new BufferedWriter(new FileWriter(read, true));
 
+		DecimalFormat df = new DecimalFormat("0.00");
 		String linha = "===== SAQUE =====";
-		Scanner in = new Scanner(System.in);
 
 		buffWrite.append(linha + "\n");
 
@@ -40,7 +35,7 @@ public class EscritaTexto {
 		linha = "AGENCIA: " + conta.getAgencia();
 		buffWrite.append(linha + "\n");
 
-		linha = "VALOR RETIRADO: " + valorSaque;
+		linha = "VALOR RETIRADO R$" + df.format(valorSaque);
 		buffWrite.append(linha + "\n");
 
 		DateTimeFormatter dtf = DateTimeFormatter.ofPattern("dd/MM/yyyy HH:mm:ss");
@@ -57,8 +52,8 @@ public class EscritaTexto {
 		String read = BASIC_PATH + "Transacoes" + EXTENSAO;
 		BufferedWriter buffWrite = new BufferedWriter(new FileWriter(read, true));
 
+		DecimalFormat df = new DecimalFormat("0.00");
 		String linha = "===== DEPÓSITO =====";
-		Scanner in = new Scanner(System.in);
 
 		buffWrite.append(linha + "\n");
 
@@ -71,7 +66,7 @@ public class EscritaTexto {
 		linha = "AGENCIA: " + conta.getAgencia();
 		buffWrite.append(linha + "\n");
 
-		linha = "VALOR DEPOSITADO: " + valorDeposito;
+		linha = "VALOR DEPOSITADO R$" + df.format(valorDeposito);
 		buffWrite.append(linha + "\n");
 
 		DateTimeFormatter dtf = DateTimeFormatter.ofPattern("dd/MM/yyyy HH:mm:ss");
@@ -89,9 +84,8 @@ public class EscritaTexto {
 		String read = BASIC_PATH + "Transacoes" + EXTENSAO;
 		BufferedWriter buffWrite = new BufferedWriter(new FileWriter(read, true));
 
+		DecimalFormat df = new DecimalFormat("0.00");
 		String linha = "===== TRANSFERÊNCIA =====";
-		Scanner in = new Scanner(System.in);
-
 		buffWrite.append(linha + "\n");
 
 		linha = "DADOS CONTA REMETENTE";
@@ -103,7 +97,7 @@ public class EscritaTexto {
 		linha = "AGENCIA: " + conta.getAgencia();
 		buffWrite.append(linha + "\n");
 
-		linha = "VALOR TRANSFERIDO: " + valorTransferencia;
+		linha = "VALOR TRANSFERIDO R$" + df.format(valorTransferencia);
 		buffWrite.append(linha + "\n");
 
 		linha = "DADOS CONTA DESTINATÁRIO";
@@ -126,118 +120,126 @@ public class EscritaTexto {
 
 	public void RelatorioContaCorrente(ContaCorrente conta) throws IOException {
 		String read = BASIC_PATH + "Relatorios Conta Corrente" + EXTENSAO;
-    	BufferedWriter buffWrite = new BufferedWriter(new FileWriter(read, true));
-    	
-    	String linha = "===== Relatorio Conta Corrente =====";          
-      	buffWrite.append(linha + "\n");
-      	
-      	linha = "====================================";
-		buffWrite.append(linha + "\n");
-	    
-      	buffWrite.append("Relatorio CPF = " + conta.getCpf()+"\n");
-      	
-      	buffWrite.append( "O total gasto com Saque foi de: R$ " + conta.getNumSaques() * 0.10 + "\n" +
-			"O total gasto com transfêrencia foi de: R$ "+ conta.getNumTransferencias() * 0.20 + "\n" +
-			"O total gasto com depósitos foi de: R$ "+ conta.getNumDepositos() * 0.10 + "\n" + 
-			"Para cada saque é cobrado o valor de 10 centavos\nPara cada depósito é cobrado o valor de 10 centavos\nPara cada transferência é cobrado o valor de 20 centavos\n");	
-			
-        
-        DateTimeFormatter dtf = DateTimeFormatter.ofPattern("dd/MM/yyyy HH:mm:ss");
-        buffWrite.append(dtf.format(LocalDateTime.now()) + "\n");
-        
-        
-	    linha = "====================================";
-	    buffWrite.append(linha + "\n");
-	        
-	    buffWrite.close();		  				
-    }
+		BufferedWriter buffWrite = new BufferedWriter(new FileWriter(read, true));
 
-	public void rendimentoPoupanca(Conta conta, int quantMeses, double depositoRendimento) throws IOException {
-		this.quantMeses = quantMeses;
-		double valor;
-		double rendimento = 0.5;
-		valor = (float)quantMeses * (float)rendimento ;
-		double n = (valor/100)*depositoRendimento;
-		DecimalFormat df = new DecimalFormat("0.00");
-		double resultadoRendimento = depositoRendimento + n;
-		
+		String linha = "===== Relatorio Conta Corrente =====";
+		buffWrite.append(linha + "\n");
+
+		linha = "====================================";
+		buffWrite.append(linha + "\n");
+
+		buffWrite.append("Relatorio CPF = " + conta.getCpf() + "\n");
+
+		buffWrite.append(conta.getInfoContaCorrente());
+
+		DateTimeFormatter dtf = DateTimeFormatter.ofPattern("dd/MM/yyyy HH:mm:ss");
+		buffWrite.append(dtf.format(LocalDateTime.now()) + "\n");
+
+		linha = "====================================";
+		buffWrite.append(linha + "\n");
+
+		buffWrite.close();
+	}
+
+	public void rendimentoPoupanca(ContaPoupanca conta, int quantMeses, double depositoRendimento) throws IOException {
 		String read = BASIC_PATH + "Relatorios Conta Poupança" + EXTENSAO;
-    	BufferedWriter buffWrite = new BufferedWriter(new FileWriter(read, true));
-    	
-    	String linha = "===== Relatório Conta Poupança =====";          
-      	buffWrite.append(linha + "\n");
-      	
-      	linha = "====================================";
-		buffWrite.append(linha + "\n");
-	    
-      	buffWrite.append("Relatorio CPF = " + conta.getCpf()+"\n");
-				
-      	buffWrite.append("\n*************Simulação Rendimento***************" + "\nSe você aplicar: R$ " + depositoRendimento + "\nEm " + quantMeses + " meses você tera um rendimento de : R$ " 
-				+ df.format(n) + "\nSeu saldo total será de : R$ " + df.format(resultadoRendimento)+ "\n");
-      	
-      	DateTimeFormatter dtf = DateTimeFormatter.ofPattern("dd/MM/yyyy HH:mm:ss");
-        buffWrite.append(dtf.format(LocalDateTime.now()) + "\n");
-        
-        linha = "====================================";
-		buffWrite.append(linha + "\n");
-		
-		buffWrite.close();
-        }
-	public void numTotalContas(Conta conta, Cliente cliente) throws IOException {
-		int totalNumConta = 0;
-		for(Conta contaAg : Conta.mapaConta.values()) {
-			if(contaAg.getAgencia() == cliente.getAgencia()) {
-				totalNumConta++;
-			}
-		}
-		
-		String read = BASIC_PATH + "Relatórios Num. Contas Agência" + EXTENSAO;
-    	BufferedWriter buffWrite = new BufferedWriter(new FileWriter(read, true));
-    	
-    	String linha = "===== Relatórios Num. Contas Agência =====";          
-      	buffWrite.append(linha + "\n");
-      	
-      	linha = "====================================";
-		buffWrite.append(linha + "\n");
-		
-		buffWrite.append("CPF do Gerenciador = " + conta.getCpf()+"\n");
-		buffWrite.append("Agência = " + cliente.getAgencia()+"\n");
-				
-		buffWrite.append("O Número Total de Contas Administradas é de: " + totalNumConta + "\n");
-		
-		DateTimeFormatter dtf = DateTimeFormatter.ofPattern("dd/MM/yyyy HH:mm:ss");
-        buffWrite.append(dtf.format(LocalDateTime.now()) + "\n");
-        
-        linha = "====================================";
-		buffWrite.append(linha + "\n");
-		
-		buffWrite.close();
-	}
-	
-	public void infos() throws IOException{
-		 
-		String read = BASIC_PATH + "Relatórios Informacoes Contas" + EXTENSAO;
-    	BufferedWriter buffWrite = new BufferedWriter(new FileWriter(read, true));
-    	
-    	String linha = "===== Relatórios Informacoes Contas =====";          
-      	buffWrite.append(linha + "\n");
-      	
-      	linha = "====================================";
-		buffWrite.append(linha + "\n");
-		
-		for (Cliente clienteAlf : Cliente.mapaClienteAlfabetico.values()) {	
-			buffWrite.append(clienteAlf.informacoes());    	
-		} 
-		
-		DateTimeFormatter dtf = DateTimeFormatter.ofPattern("dd/MM/yyyy HH:mm:ss");
-        buffWrite.append("\n" + dtf.format(LocalDateTime.now()) + "\n");
-        
-        linha = "====================================";
-		buffWrite.append(linha + "\n");
-		
-		buffWrite.close();
-		
-	}
-	
-}
+		BufferedWriter buffWrite = new BufferedWriter(new FileWriter(read, true));
 
+		String linha = "===== Relatório Conta Poupança =====";
+		buffWrite.append(linha + "\n");
+
+		linha = "====================================";
+		buffWrite.append(linha + "\n");
+
+		buffWrite.append("Relatorio CPF = " + conta.getCpf() + "\n");
+
+		buffWrite.append(conta.getInfoContaPoupanca(quantMeses, depositoRendimento));
+
+		DateTimeFormatter dtf = DateTimeFormatter.ofPattern("dd/MM/yyyy HH:mm:ss");
+		buffWrite.append(dtf.format(LocalDateTime.now()) + "\n");
+
+		linha = "====================================";
+		buffWrite.append(linha + "\n");
+
+		buffWrite.close();
+	}
+
+	public void numTotalContas(Conta conta, int totalNumConta) throws IOException {
+
+		Cliente cliente = Cliente.mapaCliente.get(conta.getCpf());
+		String read = BASIC_PATH + "Relatórios Num. Contas Agência" + EXTENSAO;
+		BufferedWriter buffWrite = new BufferedWriter(new FileWriter(read, true));
+
+		String linha = "===== Relatórios Num. Contas Agência =====";
+		buffWrite.append(linha + "\n");
+
+		linha = "====================================";
+		buffWrite.append(linha + "\n");
+
+		buffWrite.append("CPF do Gerenciador = " + conta.getCpf() + "\n");
+		buffWrite.append("Agência = " + cliente.getAgencia() + "\n");
+
+		buffWrite.append("O Número Total de Contas Administradas é de: " + totalNumConta + "\n");
+
+		DateTimeFormatter dtf = DateTimeFormatter.ofPattern("dd/MM/yyyy HH:mm:ss");
+		buffWrite.append(dtf.format(LocalDateTime.now()) + "\n");
+
+		linha = "====================================";
+		buffWrite.append(linha + "\n");
+
+		buffWrite.close();
+	}
+
+	public void infos(Conta conta) throws IOException {
+
+		String read = BASIC_PATH + "Relatórios Informacoes Contas" + EXTENSAO;
+		BufferedWriter buffWrite = new BufferedWriter(new FileWriter(read, true));
+
+		String linha = "===== Relatórios Informacoes Contas =====";
+		buffWrite.append(linha + "\n");
+
+		linha = "====================================";
+		buffWrite.append(linha + "\n");
+
+		linha = "Relatorio CPF = " + conta.getCpf();
+		buffWrite.append(linha + "\n");
+
+		for (Cliente clienteAlf : Cliente.mapaClienteAlfabetico.values()) {
+			buffWrite.append(clienteAlf.informacoes());
+		}
+
+		DateTimeFormatter dtf = DateTimeFormatter.ofPattern("dd/MM/yyyy HH:mm:ss");
+		buffWrite.append("\n" + dtf.format(LocalDateTime.now()) + "\n");
+
+		linha = "====================================";
+		buffWrite.append(linha + "\n");
+
+		buffWrite.close();
+
+	}
+
+	public void valorTotalBanco(Conta conta, Double capital) throws IOException {
+
+		String read = BASIC_PATH + "Relatório Valor Total Banco" + EXTENSAO;
+		BufferedWriter buffWrite = new BufferedWriter(new FileWriter(read, true));
+
+		String linha = "===== Relatório Valor Total Banco =====";
+		buffWrite.append(linha + "\n");
+
+		linha = "Relatorio CPF = " + conta.getCpf();
+		buffWrite.append(linha + "\n");
+
+		linha = "====================================";
+		buffWrite.append(linha + "\n");
+		DecimalFormat df = new DecimalFormat("0.00");
+		buffWrite.append("Total de capital armazenado no banco: R$ " + df.format(capital) + "\n");
+
+		DateTimeFormatter dtf = DateTimeFormatter.ofPattern("dd/MM/yyyy HH:mm:ss");
+		buffWrite.append("\n" + dtf.format(LocalDateTime.now()) + "\n");
+
+		linha = "====================================";
+		buffWrite.append(linha + "\n");
+
+		buffWrite.close();
+	}
+}

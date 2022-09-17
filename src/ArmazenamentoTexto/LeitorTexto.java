@@ -64,7 +64,7 @@ public class LeitorTexto {
 				line = re.readLine();
 			}
 		} catch (IOException o) {
-			System.out.println("Error :" + o.getMessage());
+			System.out.println("Error: " + o.getMessage());
 		}
 		return Conta.mapaConta;
 	}

@@ -9,7 +9,6 @@ import Conta.Conta;
 public class MenuLogin {
 
 	public void MenuInicial() throws IOException {
-		MenuUsuario menuUsuario = new MenuUsuario();
 
 		System.out.println("====================================================");
 		System.out.println("||              Bem Vindo ao seu Banco            ||");
@@ -32,30 +31,30 @@ public class MenuLogin {
 				System.out.println("Você está logado!");
 				MenuOpcoes(conta, cliente);
 			}
-		} 
+		}
 		while (conta == null || cliente == null || !cliente.getSenha().equalsIgnoreCase(senha)) {
-			
+
 			System.out.println("Voce digitou cpf ou senha incorretos");
-			
+
 			System.out.println("====================Digite o CPF====================");
 			cpf = in.next();
 			System.out.println("===================Digite a Senha===================");
 			senha = in.next();
-			
+
 			conta = Conta.mapaConta.get(cpf);
 			cliente = Cliente.mapaCliente.get(cpf);
-			
+
 			if (conta != null && cliente != null) {
 				if (cliente.getSenha().equalsIgnoreCase(senha)) {
 					System.out.println("Você está logado!");
 					MenuOpcoes(conta, cliente);
 				}
-			} 
+			}
 		}
 	}
 
 	public void MenuOpcoes(Conta conta, Cliente cliente) throws IOException {
 		MenuUsuario menuUsuario = new MenuUsuario();
-			menuUsuario.Menu(conta, cliente);
+		menuUsuario.Menu(conta, cliente);
 	}
 }

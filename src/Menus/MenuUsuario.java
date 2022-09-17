@@ -34,6 +34,7 @@ public class MenuUsuario {
 		System.out.println("=======================DIGITE=======================");
 		System.out.println(" 1 - PARA REALIZAR SAQUE / TRANSFERÊNCIA / DEPÓSITO");
 		System.out.println(" 2 - PARA VERIFICAR RELATORIOS");
+		System.out.println(" 3 - PARA SAIR");
 
 		int opcao = sc.nextInt();
 
@@ -78,10 +79,10 @@ public class MenuUsuario {
 				System.out.println("Qual o valor do deposito ?");
 				double valorDeposito = sc.nextDouble();
 				boolean depositou = conta.Depositar(valorDeposito);
-				if(depositou) {
+				if (depositou) {
 					System.out.println("***Depósito realizado com sucesso!***");
 					escritaTexto.ComprovanteDeposito(conta, valorDeposito);
-				}else {
+				} else {
 					System.out.println("***Depósito não realizado!***");
 				}
 				System.out.println("Você deseja fazer outra operação?");
@@ -94,7 +95,7 @@ public class MenuUsuario {
 				}
 				break;
 			case 3:
-				System.out.println("Qual o valor do saque ?");
+				System.out.println("Qual o valor do saque?");
 				double valorSaque = sc.nextDouble();
 				boolean sacou = conta.Sacar(valorSaque);
 				if (sacou) {
@@ -103,6 +104,7 @@ public class MenuUsuario {
 				} else {
 					System.out.println("***Saldo Insuficiente***");
 				}
+				System.out.println("Você deseja fazer outra operação?");
 				System.out.println("1 - Para sim || 2 - Para não");
 				int si = sc.nextInt();
 				if (si == 1) {
@@ -132,6 +134,8 @@ public class MenuUsuario {
 				MenuRelatorio(EnumFuncionario.PRESIDENTE.getValor(), conta, cliente);
 			}
 			break;
+		case 3:
+			menuLogin.MenuInicial();
 		default:
 			System.out.println("Você escolheu uma opção inexistente.");
 			menuLogin.MenuOpcoes(conta, cliente);
@@ -143,29 +147,29 @@ public class MenuUsuario {
 		System.out.println("=======================DIGITE=======================");
 		if (conta.getTipo().equalsIgnoreCase(EnumConta.CONTACORRENTE.getNome())) {
 			System.out.println(" 1 - Para receber o relatório de tributação");
-						
+
 		} else {
 			System.out.println(" 1 - Para receber opção de rendimento da Poupança");
 		}
 		if (cargo > 1) {
-			System.out.println(" 2 - Relatório  numero de Contas");
+			System.out.println(" 2 - Relatório número de Contas");
 		}
 		if (cargo > 2) {
 			System.out.println(" 3 - Relatório com as informações de Nome, CPF e Agência");
 		}
 		if (cargo > 3) {
-			System.out.println(" 4 - Relatório com valor Total saldo");
+			System.out.println(" 4 - Relatório valor total armazenado no Banco");
 		}
 		System.out.println(" 5 - Para Sair");
 
 		int opcao2 = sc.nextInt();
 		switch (opcao2) {
-		case 1: 
+		case 1:
 			if (conta.getTipo().equalsIgnoreCase(EnumConta.CONTACORRENTE.getNome())) {
 				ContaCorrente contaCorrente = (ContaCorrente) conta;
 				escritaTexto.RelatorioContaCorrente(contaCorrente);
-				System.out.println("Relatório Gerado!");
-				
+				System.out.println(contaCorrente.getInfoContaCorrente());
+
 				System.out.println("Você deseja fazer outra operação?");
 				System.out.println("1 - Para sim || 2 - Para não");
 				int sim = sc.nextInt();
@@ -180,9 +184,8 @@ public class MenuUsuario {
 				double valorSimulado = sc.nextDouble();
 				System.out.println("Digite quantos meses deseja fazer a simulação: ");
 				int mesesSimulado = sc.nextInt();
-				escritaTexto.rendimentoPoupanca(contaPoupanca,mesesSimulado,valorSimulado);
-				System.out.println("Rendimento Gerado!");
-				
+				System.out.println(contaPoupanca.getInfoContaPoupanca(mesesSimulado, valorSimulado));
+				escritaTexto.rendimentoPoupanca(contaPoupanca, mesesSimulado, valorSimulado);
 				System.out.println("Você deseja fazer outra operação?");
 				System.out.println("1 - Para sim || 2 - Para não");
 				int sim = sc.nextInt();
@@ -192,12 +195,17 @@ public class MenuUsuario {
 					menuLogin.MenuInicial();
 				}
 			}
-			
+
 			break;
 		case 2:
-			escritaTexto.numTotalContas(conta, cliente);
-			System.out.println("Rendimento Gerado!");			
-			
+			int totalNumConta = 0;
+			for (Conta contaAg : Conta.mapaConta.values()) {
+				if (contaAg.getAgencia() == cliente.getAgencia()) {
+					totalNumConta++;
+				}
+			}
+			System.out.printf("O número total de contas administradas por você é de: %d!", totalNumConta);
+			escritaTexto.numTotalContas(conta, totalNumConta);
 			System.out.println("Você deseja fazer outra operação?");
 			System.out.println("1 - Para sim || 2 - Para não");
 			int sim = sc.nextInt();
@@ -209,34 +217,38 @@ public class MenuUsuario {
 			break;
 
 		case 3:
-			escritaTexto.infos();
-			System.out.println("Rendimento Gerado!");	
-			
+			System.out.println("Informação das contas da sua agência: ");
+			for (Cliente clienteAlf : Cliente.mapaClienteAlfabetico.values()) {
+				System.out.println(clienteAlf.informacoes());
+			}
+			escritaTexto.infos(conta);
 			System.out.println("Você deseja fazer outra operação?");
 			System.out.println("1 - Para sim || 2 - Para não");
 			sim = sc.nextInt();
-			if(sim==1) {
+			if (sim == 1) {
 				menuLogin.MenuOpcoes(conta, cliente);
-			}else {
-				menuLogin.MenuInicial();				}
+			} else {
+				menuLogin.MenuInicial();
+			}
 			break;
 		case 4:
 			double capital = 0;
-			for( String cpf : Conta.mapaConta.keySet()) {
+			for (String cpf : Conta.mapaConta.keySet()) {
 				capital += Conta.mapaConta.get(cpf).getSaldo();
-			}System.out.printf("Total de capital armazenado no banco %.2f\n", capital);
+			}
+			escritaTexto.valorTotalBanco(conta, capital);
+			System.out.printf("O total de capital armazenado no banco é de: R$%.2f\n", capital);
 			System.out.println("Você deseja fazer outra operação?");
 			System.out.println("1 - Para sim || 2 - Para não");
 			sim = sc.nextInt();
-			if(sim==1) {
+			if (sim == 1) {
 				menuLogin.MenuOpcoes(conta, cliente);
-			}else {
-				menuLogin.MenuInicial();				}
+			} else {
+				menuLogin.MenuInicial();
+			}
 			break;
-		default: 
+		default:
 			menuLogin.MenuOpcoes(conta, cliente);
-			
 		}
-
 	}
 }
